@@ -5,15 +5,46 @@
 # Version:      0.0.1
 
 
+Vagrant.require_version ">= 2.2.6"
+
 Vagrant.configure("2") do |config|
 
-  # We set up one machine, with a default NAT interface and a host-only
-  # interface.
-  config.vm.define "boxA" do |boxA|
-    #boxA.vm.box = "ubuntu/bionic64"
-    boxA.vm.box = "ubuntu/focal64"       # ubuntu 20.04 guest vm
-    boxA.vm.hostname = "boxA.vm"         # set hostname
-    boxA.vm.network "private_network", ip: "192.168.50.4", :name => 'vboxnet0'
+  # define the virtual machine
+  config.vm.define "Lab02 - boxA"                        # description
+  config.vm.box = "ubuntu/focal64"                       # base box - ubuntu 20.04
+  config.vm.hostname = "boxA.vm"                         # set hostname
+
+  # configure virtual machine
+  config.vm.provider :virtualbox do |vb, override|
+    vb.gui = false                                       # true = GUI, false = headless
+    vb.customize ["modifyvm", :id, "--cpus", 1]          # number of cpu allocated
+    vb.customize ["modifyvm", :id, "--memory", 2048]     # ram memory allocated
   end
 
+  # configure virtual network
+  config.vm.network "private_network", ip: "192.168.50.4", :name => 'vboxnet0'
+
+  # update linux packages currently within virtual machine
+  config.vm.provision "shell", name: "update linux packages (as root)",
+    run: "always", inline: "apt-get -y update && apt-get -y dist-upgrade"
+
+  # install networking tools used within virtual machine
+  config.vm.provision "shell", name: "install networking tools used in labs (as root)",
+    run: "once", path: "../scripts/net-tools.sh"
+
 end
+
+
+
+#Vagrant.configure("2") do |config|
+
+  ## We set up one machine, with a default NAT interface and a host-only
+  ## interface.
+  #config.vm.define "boxA" do |boxA|
+    ##boxA.vm.box = "ubuntu/bionic64"
+    #boxA.vm.box = "ubuntu/focal64"       # ubuntu 20.04 guest vm
+    #boxA.vm.hostname = "boxA.vm"         # set hostname
+    #boxA.vm.network "private_network", ip: "192.168.50.4", :name => 'vboxnet0'
+  #end
+
+#end
