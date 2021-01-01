@@ -10,31 +10,71 @@
 # using NAT networking and a forwarding rule for incoming SSH traffic
 
 
+servers=[
+  {
+    :define => "Lab01 - box1",
+    :hostname => "box1",
+    :box => "ubuntu/focal64",
+    :ram => 2048,
+    :cpu => 1
+  }
+]
+
 Vagrant.require_version ">= 2.2.6"
 
-Vagrant.configure("2") do |config|
+Vagrant.configure(2) do |config|
+    servers.each do |machine|
+        config.vm.define machine[:define] do |node|
+            # define the virtual machine
+            node.vm.box = machine[:box]
+            node.vm.hostname = machine[:hostname]
 
-  # define the virtual machine
-  config.vm.define "Lab01 - boxA"                        # description
-  config.vm.box = "ubuntu/focal64"                       # base box - ubuntu 20.04
-  config.vm.hostname = "boxA.vm"                         # set hostname
+            # configure virtual machine
+            node.vm.provider "virtualbox" do |vb|
+                vb.gui = false                                             # true = GUI, false = headless
+                vb.customize ["modifyvm", :id, "--cpus", machine[:cpu]]    # number of cpu allocated
+                vb.customize ["modifyvm", :id, "--memory", machine[:ram]]  # ram memory allocated
+            end
 
-  # configure virtual machine
-  config.vm.provider :virtualbox do |vb, override|
-    vb.gui = false                                       # true = GUI, false = headless
-    vb.customize ["modifyvm", :id, "--cpus", 1]          # number of cpu allocated
-    vb.customize ["modifyvm", :id, "--memory", 2048]     # ram memory allocated
-  end
+            # update linux packages currently within virtual machine
+            node.vm.provision "shell", name: "update linux packages (as root)",
+                run: "always", inline: "apt-get -y update && apt-get -y dist-upgrade"
 
-  # update linux packages currently within virtual machine
-  config.vm.provision "shell", name: "update linux packages (as root)",
-    run: "always", inline: "apt-get -y update && apt-get -y dist-upgrade"
-
-  # install networking tools used within virtual machine
-  config.vm.provision "shell", name: "install networking tools used in labs (as root)",
-    run: "once", path: "../scripts/net-tools.sh"
-
+            # install networking tools used within virtual machine
+            node.vm.provision "shell", name: "install networking tools used in labs (as root)",
+                run: "once", path: "../scripts/net-tools.sh"
+        end
+    end
 end
+
+
+
+
+#Vagrant.require_version ">= 2.2.6"
+
+#Vagrant.configure("2") do |config|
+
+  ## define the virtual machine
+  #config.vm.define "Lab01 - boxA"                        # description
+  #config.vm.box = "ubuntu/focal64"                       # base box - ubuntu 20.04
+  #config.vm.hostname = "boxA.vm"                         # set hostname
+
+  ## configure virtual machine
+  #config.vm.provider :virtualbox do |vb, override|
+    #vb.gui = false                                       # true = GUI, false = headless
+    #vb.customize ["modifyvm", :id, "--cpus", 1]          # number of cpu allocated
+    #vb.customize ["modifyvm", :id, "--memory", 2048]     # ram memory allocated
+  #end
+
+  ## update linux packages currently within virtual machine
+  #config.vm.provision "shell", name: "update linux packages (as root)",
+    #run: "always", inline: "apt-get -y update && apt-get -y dist-upgrade"
+
+  ## install networking tools used within virtual machine
+  #config.vm.provision "shell", name: "install networking tools used in labs (as root)",
+    #run: "once", path: "../scripts/net-tools.sh"
+
+#end
 
 #Vagrant.configure("2") do |config|
 
