@@ -1,0 +1,62 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+# Maintainer:   jeffskinnerbox@yahoo.com / www.jeffskinnerbox.me
+# Version:      0.0.1
+
+
+# We set up one box, without any networking options
+# This will establish one interface on the guest machine,
+# using NAT networking and a forwarding rule for incoming SSH traffic
+
+
+Vagrant.require_version ">= 2.2.6"
+
+Vagrant.configure("2") do |config|
+
+  # define the virtual machine
+  config.vm.define "Lab01 - boxA"                        # description
+  config.vm.box = "ubuntu/focal64"                       # base box - ubuntu 20.04
+  config.vm.hostname = "boxA.vm"                         # set hostname
+
+  # configure virtual machine
+  config.vm.provider :virtualbox do |vb, override|
+    vb.gui = false                                       # true = GUI, false = headless
+    vb.customize ["modifyvm", :id, "--cpus", 1]          # number of cpu allocated
+    vb.customize ["modifyvm", :id, "--memory", 2048]     # ram memory allocated
+  end
+
+  # update linux packages currently within virtual machine
+  config.vm.provision "shell", name: "update linux packages (as root)",
+    run: "always", inline: "apt-get -y update && apt-get -y dist-upgrade"
+
+  # install networking tools used within virtual machine
+  config.vm.provision "shell", name: "install networking tools used in labs (as root)",
+    run: "once", path: "../scripts/net-tools.sh"
+
+end
+
+#Vagrant.configure("2") do |config|
+
+  ## define the virtual machine
+  #config.vm.define "Lab01 - boxA" do |boxA|
+    #boxA.vm.box = "ubuntu/focal64"                       # ubuntu 20.04 guest vm
+    #boxA.vm.hostname = "boxA.vm"                         # set hostname
+  #end
+
+  ## configure virtual machine
+  #config.vm.provider "virtualbox" do |vb|
+    #vb.gui = false                                       # true = GUI, false = headless
+    #vb.customize ["modifyvm", :id, "--cpus", 1]          # number of cpu used
+    #vb.customize ["modifyvm", :id, "--memory", 2048]     # memory used
+  #end
+
+  ## update linux packages currently within virtual machine
+  #config.vm.provision "shell", name: "update linux packages (as root)",
+    #run: "always", inline: "apt-get -y update && apt-get -y dist-upgrade"
+
+  ## install networking tools used within virtual machine
+  #config.vm.provision "shell", name: "install networking tools used in labs (as root)",
+    #run: "once", path: "../scripts/net-tools.sh"
+
+#end
