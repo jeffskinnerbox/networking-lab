@@ -6,7 +6,7 @@ Version:      0.0.1
 
 
 
-# Single Machine Networking with Host-Only Networking
+# LAB02 - Single Machine Networking With Host-Only Networking
 What is the difference between NAT / Bridged / Host-Only networking?
 
 * **Host-Only:** The VM will be assigned one IP, but it's only accessible by the box VM is running on.
@@ -29,59 +29,6 @@ Sources:
 
 
 Check out for ideas - [What’s a Host-Only Network?](https://objectpartners.com/2018/01/18/exploring-a-host-only-network/)
-
-------
-
-
-# Setup and Install Required Tools
-```bash
-# instantiate and login to boxA
-vagrant up
-vagrant ssh
-```
-
-Install networking tool:
-
-```bash
-# install networking tools
-sudo apt-get -y install net-tools
-```
-
-Install some general tools:
-
-```bash
-# json formatting tool
-sudo apt-get -y install jq
-```
-
-Install Docker prerequisites:
-
-```bash
-# packages which let apt use packages over HTTPS
-sudo apt -y install apt-transport-https ca-certificates curl software-properties-common
-
-# add the GPG key for the official docker repository
-curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
-
-# add the docker repository to apt sources
-sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu focal stable"
-
-# update the package database
-sudo apt update
-```
-
-Install Docker:
-
-```bash
-# make sure you are about to install from the Docker repo instead of the default Ubuntu repo
-apt-cache policy docker-ce
-
-# install the docker package
-sudo apt -y install docker-ce
-
-# enabled docker daemon start on boot
-sudo systemctl enable docker
-```
 
 
 ------

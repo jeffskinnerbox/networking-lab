@@ -6,7 +6,7 @@ Version:      0.0.1
 
 
 
-# Single Machine Networking with NAT Networking Adapter
+# LAB01 - Single Machine Networking With NAT Networking Adapter
 The first networking mode that we will look at is called network address translation (NAT)
 networking and is actually the VirtualBox/Vagrant default.
 
@@ -29,60 +29,6 @@ Sources:
 * [Virtualization: Bridged, NAT, Host-only - Virtual machine connection types](https://www.youtube.com/watch?v=XCkKDWMYHME)
 * [Virtual networking labs – NAT and host-only networking with VirtualBox](https://leftasexercise.com/2019/12/13/virtual-networking-labs-nat-and-host-only-networking-with-virtualbox/)
 * [Virtual networking labs – networking-samples](https://github.com/christianb93/networking-samples)
-
-
-------
-
-
-# Setup and Install Required Tools
-```bash
-# instantiate and login to boxA
-vagrant up
-vagrant ssh
-```
-
-Install networking tool:
-
-```bash
-# install networking tools
-sudo apt-get -y install net-tools
-```
-
-Install some general tools:
-
-```bash
-# json formatting tool
-sudo apt-get -y install jq
-```
-
-Install Docker prerequisites:
-
-```bash
-# packages which let apt use packages over HTTPS
-sudo apt -y install apt-transport-https ca-certificates curl software-properties-common
-
-# add the GPG key for the official docker repository
-curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
-
-# add the docker repository to apt sources
-sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu focal stable"
-
-# update the package database
-sudo apt update
-```
-
-Install Docker:
-
-```bash
-# make sure you are about to install from the Docker repo instead of the default Ubuntu repo
-apt-cache policy docker-ce
-
-# install the docker package
-sudo apt -y install docker-ce
-
-# enabled docker daemon start on boot
-sudo systemctl enable docker
-```
 
 
 ------

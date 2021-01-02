@@ -42,7 +42,6 @@ To provide the basics to understand all this,
 this series aims at introducing some of the more commonly used techniques using hands-on exercises.
 
 Orginal Source:
-* [Virtual networking labs – networking-samples](https://github.com/christianb93/networking-samples)
 * [Virtual networking labs – NAT and host-only networking with VirtualBox](https://leftasexercise.com/2019/12/13/virtual-networking-labs-nat-and-host-only-networking-with-virtualbox/)
 * [Virtual networking labs – VirtualBox internal networks and bridges](https://leftasexercise.com/2019/12/16/virtual-networking-labs-virtualbox-internal-networks-and-bridges/)
 * [Virtual networking labs – more on bridges](https://leftasexercise.com/2019/12/20/virtual-networking-labs-more-on-bridges/)
@@ -53,11 +52,15 @@ Orginal Source:
 * [Virtual networking labs – using OpenFlow](https://leftasexercise.com/2020/01/13/virtual-networking-labs-using-openflow/)
 * [Virtual networking labs – building a virtual router with iptables and Linux namespaces](https://leftasexercise.com/2020/01/17/virtual-networking-labs-building-a-virtual-firewall-and-router-with-linux-namespaces/)
 
+Ansible Sources:
+* https://leftasexercise.com/?s=ansible
+* [Set up an Ansible lab in 20 minutes](https://opensource.com/article/20/12/ansible-lab)
+
 Additional Sources:
 * [Creating a Bridge and Shared Network on Docker](https://qiita.com/kojiwell/items/f16757c1f0cc86ff225b)
-* https://leftasexercise.com/?s=ansible
 * [Linux Bridge - how it works](https://goyalankit.com/blog/linux-bridge)
 * [Is the network device in promiscuous mode?](https://goyalankit.com/blog/promiscuous-mode-detection)
+* [Vagrant :: SSH Inter-Connectivity of Multi Virtual Machines](https://vinaysit.com/2019/06/11/vagrant-ssh-inter-connectivity-of-multi-virtual-machines/)
 
 # networking-samples
 A few labs to study virtual networking with Linux
@@ -142,8 +145,8 @@ A virtual extensible LAN (VXLAN) is another example of virtual networking. Beyon
 
 ### Networking Modes
 Within [VirtualBox virtual networking][07],
-each VM can have up to 8 network adaptors and each is one of 6 types of adaptors.
-Networking adapters can be  further separately configured to operate in one of the following [networking modes][08]:
+each VM can have up to 8 network adaptors, and each adaptor is one of 6 types.
+Networking adapters can be further separately configured to operate in one of the following [networking modes][08]:
 Not Attached, Network Attached Translation (NAT), NAT Network, Bridged Network,
 Internal Networking, Host-Only Networking, Generic Networking.
 Within the Labs, we will focus on the following:
@@ -510,5 +513,15 @@ boxB.vm.network "private_network", ip: "192.168.50.5", virtualbox__intnet: "myNe
 [08]:https://www.nakivo.com/blog/virtualbox-network-setting-guide/
 [09]:https://en.wikipedia.org/wiki/IP_address#Public_address
 [10]:https://en.wikipedia.org/wiki/Private_network#Private_IPv4_address_spaces
+[11]:
+[12]:
+[13]:
+[14]:
+[15]:
+[16]:
+[17]:
+[18]:
+[19]:
+[20]:
 
 

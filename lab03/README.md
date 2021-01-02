@@ -5,67 +5,13 @@ Version:      0.0.1
 -->
 
 
-# Virtual Internal Networks and Bridges
+# LAB03 - Virtual Internal Networks and Bridges
 So far, we have been playing with virtual networking for one VM, connected to the host.
 Now let us see how we can establish virtual networks connecting more than one VM.
 
 Sources:
 * [Virtual networking labs – VirtualBox internal networks and bridges](https://leftasexercise.com/2019/12/16/virtual-networking-labs-virtualbox-internal-networks-and-bridges/)
 * [Virtual networking labs – networking-samples](https://github.com/christianb93/networking-samples)
-
-
-------
-
-
-# Setup and Install Required Tools
-```bash
-# instantiate and login to boxA
-vagrant up
-vagrant ssh
-```
-
-Install networking tool:
-
-```bash
-# install networking tools
-sudo apt-get -y install net-tools traceroute arp-scan
-```
-
-Install some general tools:
-
-```bash
-# json formatting tool
-sudo apt-get -y install jq
-```
-
-Install Docker prerequisites:
-
-```bash
-# packages which let apt use packages over HTTPS
-sudo apt -y install apt-transport-https ca-certificates curl software-properties-common
-
-# add the GPG key for the official docker repository
-curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
-
-# add the docker repository to apt sources
-sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu focal stable"
-
-# update the package database
-sudo apt update
-```
-
-Install Docker:
-
-```bash
-# make sure you are about to install from the Docker repo instead of the default Ubuntu repo
-apt-cache policy docker-ce
-
-# install the docker package
-sudo apt -y install docker-ce
-
-# enabled docker daemon start on boot
-sudo systemctl enable docker
-```
 
 
 ------
