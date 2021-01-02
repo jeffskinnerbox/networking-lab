@@ -13,102 +13,125 @@ Version:      0.0.1
 ----
 
 
-# Computer Networking Training
-* [Sunny Classroom](https://www.youtube.com/user/sunnylearning/featured)
-* [Computer Networking Complete Course - Beginner to Advanced](https://www.youtube.com/watch?v=QKfk7YFILws)
-
-# Prerequsites
-You will need to know VirtualBox, Vagrant, Docker, and Ansible.
-
-# Step X:
-The inital versions of the labs are stored in a [Github reposítory populated by christianb93][01].
-You could clone this repository but ...
-
-```bash
-# clone repository
-cd /home/jeff/src/vagrant-machines/networking-lab
-git clone https://github.com/christianb93/networking-samples.git networking-lab
-
-# clone my repository
-```
-
-
 # Virtual Networking Lab
-When you work with virtualized environments,
+When you work with [virtualization][12] environments like [VirtualBox][17] and [Vagrant][16],
 you will sooner or later realize that a large part of the complexity of such environments
-originates in the non-trivial endeavor of networking.
-The virtualization technology stacks different virtualization layers on top of each other.
-To provide the basics to understand all this,
-this series aims at introducing some of the more commonly used techniques using hands-on exercises.
+originates in the non-trivial endeavor of [TCP/IP computer networking][11].
+The virtualization process/technology requires you to stack different virtualization layers on top of each other.
+One of those layers is networking, which also has to be virtualized,
+and seems to get hidden and overlooked in the larger issues of virtualization.
+To provide the basics to understand of virtaul networing,
+this series aims at introducing some of the more common virtual networking techniques via hands-on exercises.
 
-Orginal Source:
-* [Virtual networking labs – NAT and host-only networking with VirtualBox](https://leftasexercise.com/2019/12/13/virtual-networking-labs-nat-and-host-only-networking-with-virtualbox/)
-* [Virtual networking labs – VirtualBox internal networks and bridges](https://leftasexercise.com/2019/12/16/virtual-networking-labs-virtualbox-internal-networks-and-bridges/)
-* [Virtual networking labs – more on bridges](https://leftasexercise.com/2019/12/20/virtual-networking-labs-more-on-bridges/)
-* [Virtual networking labs – virtual Ethernet networks with VLAN tags](https://leftasexercise.com/2019/12/30/virtual-networking-labs-virtual-ethernet-networks-with-vlan-tags/)
-* [Virtual networking labs – overlay networks](https://leftasexercise.com/2020/01/03/virtual-networking-labs-overlay-networks/)
-* [Virtual networking labs – a short introduction to Open vSwitch](https://leftasexercise.com/2020/01/06/virtual-networking-labs-a-short-introduction-to-open-vswitch/)
-* [Virtual networking labs – Open vSwitch in practice](https://leftasexercise.com/2020/01/10/virtual-networking-labs-open-vswitch-in-practice/)
-* [Virtual networking labs – using OpenFlow](https://leftasexercise.com/2020/01/13/virtual-networking-labs-using-openflow/)
-* [Virtual networking labs – building a virtual router with iptables and Linux namespaces](https://leftasexercise.com/2020/01/17/virtual-networking-labs-building-a-virtual-firewall-and-router-with-linux-namespaces/)
+Within this series of Labs I provide a validated [Vagrant Vagrantfile][13]
+that you can be use to spin-up different types of virtualized environments.
+With this, you can then go into these environments and explore what has been implemented.
+You can demonstrate to yourself how the environment is constructed, its capabilities, and its limitations.
+Potentially even more useful is that it provides a template that
+you can reuse / extend when the day comes when you wish to build a like environment for a project.
 
-Ansible Sources:
-* https://leftasexercise.com/?s=ansible
-* [Set up an Ansible lab in 20 minutes](https://opensource.com/article/20/12/ansible-lab)
+A few of the labs you can study are:
 
-Additional Sources:
-* [Creating a Bridge and Shared Network on Docker](https://qiita.com/kojiwell/items/f16757c1f0cc86ff225b)
-* [Linux Bridge - how it works](https://goyalankit.com/blog/linux-bridge)
-* [Is the network device in promiscuous mode?](https://goyalankit.com/blog/promiscuous-mode-detection)
-* [Vagrant :: SSH Inter-Connectivity of Multi Virtual Machines](https://vinaysit.com/2019/06/11/vagrant-ssh-inter-connectivity-of-multi-virtual-machines/)
+* Work In Progress ...
+    * Lab01 - Single Machine Networking With NAT Networking Adapter
+    * Lab02 - Single Machine Networking With Host-Only Networking
+    * LAB03 - Virtual Internal Networks and Bridges
+    * LAB04 - Virtual Internal Networking
+* Not Started Yet ...
+    * Lab05 - Linux bridging basics
+    * Lab06 - Setting up and monitoring bridges
+    * Lab07 - Bridged networking with VirtualBox
+    * Lab08 - VLAN networking with Linux
+    * Lab09 - Setting up a point-to-point VXLAN connection
+    * Lab10 - VXLAN and IP multicasting
+    * Lab11 - Setting up an overlay network with Open vSwitch
+    * Lab12 - VLAN separation with Open vSwitch
+    * Lab13 - Building a virtual router with Linux namespaces and iptables
 
-# networking-samples
-A few labs to study virtual networking with Linux
+## Structure
+Each Lab has its own directory with a `Vagrantfile` and a `README.md` file.
+All the Labs use VirtualBox for server virtualization and some use Docker for containers.
+[Vagrant provisioning][14] is typical done via Shell, but [Ansible][15] is also used in some Labs.
+Assuming you have installed all these utilities,
+the Vagrantfiles should be ready to go, just use `vagrent up` to get started.
 
-* Lab01 - Single machine networking with NAT networking adapter
-* Lab02 - Single machine networking with host-only network
-* Lab03 - Virtualbox host-only networking with more than one machine
-* Lab04 - VirtualBox internal networking
-* Lab05 - Linux bridging basics
-* Lab06 - Setting up and monitoring bridges
-* Lab07 - Bridged networking with VirtualBox
-* Lab08 - VLAN networking with Linux
-* Lab09 - Setting up a point-to-point VXLAN connection
-* Lab10 - VXLAN and IP multicasting
-* Lab11 - Setting up an overlay network with Open vSwitch
-* Lab12 - VLAN separation with Open vSwitch
-* Lab13 - Building a virtual router with Linux namespaces and iptables
+To support the activities performed within the Labs,
+some utilities need to be installed within the server environments.
+This is done by a few [Bash shell][19] scripts that you will find in the repositories directory `scripts`.
+
+## Prerequisites
+There is no way around it,
+you will need to know [VirtualBox][17], [Vagrant][16], [Ansible][15], [Docker][18],
+and particularly some basic understanding of computer networking.
+The concepts and terminology used within these Labs will be a major barrier
+to those who don't have a fairly solid understanding of at least computer networking.
+
+If you need a refresher on computer networking, here are some good tutorials:
+
+* [Computer Networking Tutorial: The Ultimate Guide](https://www.softwaretestinghelp.com/computer-networking-basics/)
+* [Computer Networking Complete Course - Beginner to Advanced](https://www.youtube.com/watch?v=QKfk7YFILws)
+* [Sunny Classroom](https://www.youtube.com/user/sunnylearning/featured)
+
+## Sources
+Nearly all the Labs are a refinement of other peoples work, and so many thanks must go to all of them.
+My major sources are the following:
+
+* Original Sources
+    * [Virtual networking labs – NAT and host-only networking with VirtualBox](https://leftasexercise.com/2019/12/13/virtual-networking-labs-nat-and-host-only-networking-with-virtualbox/)
+    * [Virtual networking labs – VirtualBox internal networks and bridges](https://leftasexercise.com/2019/12/16/virtual-networking-labs-virtualbox-internal-networks-and-bridges/)
+    * [Virtual networking labs – more on bridges](https://leftasexercise.com/2019/12/20/virtual-networking-labs-more-on-bridges/)
+    * [Virtual networking labs – virtual Ethernet networks with VLAN tags](https://leftasexercise.com/2019/12/30/virtual-networking-labs-virtual-ethernet-networks-with-vlan-tags/)
+    * [Virtual networking labs – overlay networks](https://leftasexercise.com/2020/01/03/virtual-networking-labs-overlay-networks/)
+    * [Virtual networking labs – a short introduction to Open vSwitch](https://leftasexercise.com/2020/01/06/virtual-networking-labs-a-short-introduction-to-open-vswitch/)
+    * [Virtual networking labs – Open vSwitch in practice](https://leftasexercise.com/2020/01/10/virtual-networking-labs-open-vswitch-in-practice/)
+    * [Virtual networking labs – using OpenFlow](https://leftasexercise.com/2020/01/13/virtual-networking-labs-using-openflow/)
+    * [Virtual networking labs – building a virtual router with iptables and Linux namespaces](https://leftasexercise.com/2020/01/17/virtual-networking-labs-building-a-virtual-firewall-and-router-with-linux-namespaces/)
+* To Be Added Ansible Sources
+    * https://leftasexercise.com/?s=ansible
+    * [Set up an Ansible lab in 20 minutes](https://opensource.com/article/20/12/ansible-lab)
+* To Be Added Additional Sources
+    * [Creating a Bridge and Shared Network on Docker](https://qiita.com/kojiwell/items/f16757c1f0cc86ff225b)
+    * [Linux Bridge - how it works](https://goyalankit.com/blog/linux-bridge)
+    * [Is the network device in promiscuous mode?](https://goyalankit.com/blog/promiscuous-mode-detection)
+    * [Vagrant :: SSH Inter-Connectivity of Multi Virtual Machines](https://vinaysit.com/2019/06/11/vagrant-ssh-inter-connectivity-of-multi-virtual-machines/)
+    * [Virtual DIY Linux routers](https://github.com/basdusee/vagrant-linux-routers)
+    * [How to emulate Internet in multi machine environment with Vagrant](https://stackoverflow.com/questions/28094827/how-to-emulate-internet-in-multi-machine-environment-with-vagrant)
+    * [Open Source Routing: Practical Lab](https://oswalt.dev/2015/06/open-source-routing-practical-lab/)
 
 
 -------
 
 
 # Background
-For the beginner, mastering Vagrant can be a challenge,
-and new users will be confused on the network configuration of Vagrant.
-I recommend reading some "Getting Started With Vagrant" type blogs and experimenting with Vagrant first.
+For the beginner, mastering computer networking, Vagrant,
+and all the other prerequisites can be a challenge.
+New users will likely be confused by all the network configuration of Vagrant and their relevancy.
+I recommend reading some "ICP/IP Computer Networking" and "Getting Started With Vagrant"
+type blogs and experimenting with Vagrant first.
 Learn how to use Vagrant's CLI and navigate its basic features.
-Next step would be learning the virtual networking capabilities of your chosen hypervisor (I recommend VirtualBox).
-VirtualBox’s Network document is a good source to refer.
+Next step would be learning the virtual networking capabilities of your chosen hypervisor
+(I use within the Labs, and recommend, VirtualBox).
+VirtualBox’s Network document is a good source to reference.
 With that behind you, learning how to use the Vagrant virtual networking capabilities is
 your third step, and that is where these labs come in to help.
 
-The material below is offered up as a quick review of Vagrant, VirtualBox to prepare you for the lab work.
+The material below is offered as a review of computer networking, Vagrant, VirtualBox,
+and giving you a  quick refresher of key concepts to prepare you for the lab work.
 
 ## What is a Hypervisor?
-A Hypervisor (also called a virtual machine monitor or VMM)
+A [Hypervisor][20] (also called a virtual machine monitor or VMM)
 is a software or firmware that manages and allocates different hardware resources
-of a host machine for a guest machines.
+of a host machine for a guest machines (aka [virtualized server][21]).
 There are two types of Hypervisors and their working principles differ by quite a lot degree.
 
 * **Type 1 Hypervisor**,
-also knowns as bare-metal Hypervisor, is a firmware (can also be hardware)
+also known as [bare-metal Hypervisor][22], is a firmware (can also be hardware)
 that runs directly on system hardware.
 This Hypervisor controls n number of operating systems or virtual machines
 running as guest machines on the host hardware.
 Here the job of Hypervisor is to allocate system resources to virtual machines.
 Type 1 Hypervisors usually include hardware support that means it has a pre-installed kernel.
-Type 1 Hypervisors: Xen, VMware ESXi, and Microsoft Hyper-V
+Examples of Type 1 Hypervisors: Xen, VMware ESXi, and Microsoft Hyper-V
 * **Type 2 Hypervisor**
 is a software that runs on a host operating system.
 This Hypervisor creates a process and allocates system resources like
@@ -116,23 +139,134 @@ memory, persistent storages, and other vital things.
 Then guest OS runs inside this process and uses available resources.
 Here Hypervisor acts as a middle man between the guest OS
 and host OS to translate guest OS instructions so that host OS can understand it.
-Type 2 Hypervisors: VMware Workstation, VMware Player, Oracle VirtualBox
+Examples of Type 2 Hypervisors: VMware Workstation, VMware Player, Oracle VirtualBox
 
 ## What is VirtualBox?
+VirtualBox is a powerful x86 and AMD64/Intel64 virtualization product
+for enterprise as well as home use.
+[VirtualBox is easy to install & us][23],
+and is designed to run virtual machines on your physical machine
+without reinstalling your OS that is running on a physical machine.
+VirtualBox an extremely feature rich, high performance product for enterprise customers,
+and it is also the only professional solution that is freely available as Open Source Software.
+VirtualBox runs on Windows, Linux, Macintosh, and Solaris hosts
+and supports a large number of guest operating systems including DOS, Windows, Linux, and others.
+
+VirtualBox virtual machines are isolated from each other and from the host operating system.
+Thus, you can perform your tests in isolated virtual machines without any concerns
+of damaging your host operating system or other virtual machines.
+For some guest operating systems,
+a "Guest Additions" package of device drivers and system applications is available,
+which typically improves performance, especially that of graphics.
+Each guest can be started, paused and stopped independently within its own virtual machine (VM).
+The user can independently configure each VM and run it under a choice
+of software-based virtualization or hardware assisted virtualization
+if the underlying host hardware supports this.
+The host OS and guest OSs and applications can communicate with each other through a
+number of mechanisms including a common clipboard and a virtualized network facility.
+Guest VMs can also directly communicate with each other if configured to do so.
+
 >**NOTE:** VirtualBox is great and most of time it is adequate.
 >But it does not support [nested virtualzation][06] which is the ability to
 >run virtual machines within another virtual machine.
 >Most of hypervisors like VMware Fusion, Hyper-V and QEMU except VirtualBox support such a feature.
 
+## What is Vagrant?
+[Vagrant][27] is an open-source tool that allows you to create, configure,
+and manage boxes of virtual machines through an easy to use command interface.
+Essentially, it is a layer of software installed between a virtualization tool
+(such as VirtualBox, Docker, Hyper-V) and a VM.
+
+Because Vagrant completely specifies the VM's configuration within a file (called a Vagrantfile),
+you can ensure all team members are building for the same configuration.
+By providing a common text-based format to work with virtual machines,
+your environment can be defined in code, making it easy to
+back up, modify, share, and manage with revision control.
+It also means that rather than sharing a whole virtual machine image, which could be many gigabytes,
+every time a change is made to the configuration,
+a simple text file weighing at just a few kilobytes can be shared instead.
+
+One of the great features of Vagrant is that users are never tied to one virtualization platform
+(Virtualbox, VMware, Hyper-V etc.),
+rather they can create workflows that work with any or all of these simultaneously.
+In addition, Vagrant is the ability to configure entire environments
+in code within a single configuration file (Vagrantfile).
+This means that with one command, `vagrant up`,
+you can bring multiple virtual machines up at once, and even with their own private networking.
+
+In order to access the Vagrant VMs you create,
+Vagrant supports some high-level networking options for things such as
+forwarded ports, connecting to a public network, or creating a private network.
+These high-level networking options are meant to define an abstraction
+that works across multiple hypervisor providers.
+This means that you can take your `Vagrantfile` you used to spin up VMs using VirtualBox
+and you can reasonably expect that `Vagrantfile` to behave the same with something like VMware.
+
+For additional information about VirtualBox, checkout these sources:
+
+* [A Beginner's Guide for Vagrant](https://blog.jeffli.me/blog/2016/12/06/a-beginners-guide-for-vagrant/)
+* [Vagrant Networking Explained](https://blog.jeffli.me/blog/2017/04/22/vagrant-networking-explained/)
+* [Vagrant: Up and Running by Mitchell Hashimoto: Networking in Vagrant](https://www.oreilly.com/library/view/vagrant-up-and/9781449336103/ch04.html)
+* [VirtualBox Network Settings: Complete Guide](https://www.nakivo.com/blog/virtualbox-network-setting-guide/)
+* [How To Configure Networking In Vagrant](https://ostechnix.com/how-to-configure-networking-in-vagrant/)
+* [Vagrant beyond the basics](https://fedoramagazine.org/vagrant-beyond-basics/)
+
 ## Physical Networking
-* network adapters / network interface controller (NIC)
+A physical [TCP/IP computer network][24] is the interconnection of multiple devices,
+also known as hosts, that are connected using multiple paths for the purpose of
+sending/receiving data or media.
+Computer networks can also include multiple devices/mediums which help
+in the communication between two different devices.
+These are known as Network devices and include things such as routers, switches, hubs, and bridges.
+
+* Network Devices
+    * **Router -**
+    * **Wireless Router -**
+    * **Hub -**
+    * **Bridge -**
+    * **Wireless Bridge -**
+    * **Switch -**
+    * **NIC -** Network Interface Controller (NIC) (aka Network Adapters)
+* Network Unique Identifiers
+    * **Hostname -** Each device in the network is associated with a unique device name,
+    established by a human administtor of the device, known as Hostname.
+    * **IP Address -** Also known as the Logical Address,
+    the IP Address is the network address of the system across the network.
+    To identify each device in the world-wide-web,
+    the Internet Assigned Numbers Authority (IANA) assigns an IPV4 address as a
+    unique identifier to each device on the Internet.
+    * **MAC Address -** The Media Access Control (MAC) address, also known as physical address,
+    is the unique identifier of each host and is associated with its NIC (Network Interface Card).
+    A MAC address is assigned to the NIC at the time of manufacturing.
+    * **Port -** A port can be referred to as a logical channel through which data
+    can be sent/received to an application.
+    Any host may have multiple applications running, and each of these applications
+    is identified using the port number on which they are running.
+    * **Socket -** The unique combination of IP address and Port number together are termed as Socket.
+* Protocols
+    * **ARP -** The Address Resolution Protocol (ARP) is used to convert an IP address
+    * to its corresponding physical address(i.e., MAC Address).
+    ARP is used by the Data Link Layer to identify the MAC address of the Receiver’s machine.
+* Other Network Resources
+    * **DNS Server -** Domain Name Server (DNS) is basically a server which translates
+    web addresses or URLs (ex: `www.google.com`) into their corresponding IP addresses.
+    Therefore, people don’t have to remember all the IP addresses of each and every website.
+* Network Types
+    * **VPN -** AVirtual Private Network (VPN) allows for information to be securely
+    sent across a public or unsecure network, such as the Internet.
+    Common uses of a VPN are to connect branch offices or remote users to a main office.
+    * **SDN -** A [Software Defined Network (SDN)][25] takes the control plane away from the switch
+    and assign it to a centralised unit called the SDN controller.
+    Hence, a network administrator can shape traffic via a centralised console without
+    having to touch the individual switches.
 
 ## Virtual Networking
 While physical networking connects computers through cabling and other hardware,
-virtual networking extends these capabilities by using software management
+[virtual networking][26] extends these capabilities by using software management
 to connect computers and servers over the Internet.
 It uses virtualized versions of traditional physical network tools,
 like switches and network adapters, allowing for more efficient routing and easier network configuration changes.
+A physical network is still required as a host for the virtual network infrastructure.
 
 Virtual networking enables communication between multiple computers,
 virtual machines (VMs), virtual servers, or other devices across a physical or virtual network.
@@ -142,6 +276,22 @@ One example of virtual networking is a virtual private network (VPN),
 which creates a secure connection between one network and another over the Internet.
 is an example of virtual networking is a virtual local area network (VLAN). A VLAN is a subgroup of a network, which combines multiple network devices into one grouping, or domain, and partitions it off from the rest.
 A virtual extensible LAN (VXLAN) is another example of virtual networking. Beyond simply dividing a network into subgroups, VXLANs can virtualize an entire network, providing large-scale overly network and segmentation capabilities.
+
+Virtual networking can inclue the following:
+
+* **vSwitch -** A software application called Virtual Switch (vSwitch) on the host server
+allows us to set up and configure a virtual network means it controls and directs communication
+between the existing physical network and virtual parts of the network.
+* **Virtual Network Adapter -** It creates a gateway between networks means
+it allows computers and virtual machines to connect to a network.
+It makes it possible for all the computers in a Local Area Network (LAN) to connect to a larger network.
+* **Virtual Machines -** These are the virtualized devices that connect to the network
+and allow various functionality.
+* **Servers -** It is part of the network host infrastructure.
+* **Firewalls -** It is designed for monitoring and preventing security threats in the virtual network.
+* **VPN -** A Virtual Private Network (VPN) uses the internet to connect two or more existing networks. It is an internet-based virtual networking technology that allows to access any physical networks that are connected. It allows connecting any private network through the internet securely and privately. It is just like a private point to point connection between two devices or networks.
+* **VLAN -** A Virtual Local Area Network (VLAN) subdivides the LAN logically into different broadcast domains means it uses partitions to group devices on a LAN network into domains with resources and configurations. It allows better security, monitoring, and management of the devices and servers within a specific domain. Each VLANs act as a separate LAN. Data transmission becomes much easier and with VLAN the increasing transmission demand is fulfilled.
+* **(VXLAN) -** Virtual Extensible Local Area Network (VXLAN) is a network virtualization technology that stretches layer 2 connections over layer 3 network by encapsulating Ethernet frames in a VXLAN packet which includes IP addresses to address the scalability problem in a more extensible manner.
 
 ### Networking Modes
 Within [VirtualBox virtual networking][07],
@@ -171,39 +321,6 @@ The Promiscuous mode can be used not only for the Bridged Networking mode, but a
 ### PortForwarding
 While not strictly a networking mode or capability,
 port forwarding is a process of intercepting traffic addressed to the appropriate IP address and port in addition to redirecting that traffic to a different IP address and/or port. Special applications can be used on computers and other router devices to configure port forwarding. One of the most popular use cases for port forwarding is by providing access to particular network services that are hidden behind the NAT from external networks. After configuring port forwarding rules, clients can access the appropriate services from outside by connecting to the router’s (host’s) external IP address and specified port.
-
-## What is Vagrant?
-One of the great features of Vagrant is that users are never tied to one virtualization platform
-(Virtualbox, VMware, Hyper-V etc.),
-rather they can create workflows that work with any or all of these simultaneously.
-
-You can think of Vagrant as a pretty sophisticated wrapper around virtualization.
-It allows users to configure test environments regardless of their virtualization solution
-and know that the end result will be the same configured virtual machine.
-
-One of the great features of Vagrant is the ability to configure entire environments
-in code within a single configuration file (Vagrantfile).
-This means that with one command, `vagrant up`,
-you can bring multiple virtual machines up at once, and even with their own private networking.
-
-In order to access the Vagrant VMs you create,
-Vagrant supports some high-level networking options for things such as
-forwarded ports, connecting to a public network, or creating a private network.
-These high-level networking options are meant to define an abstraction that works across multiple providers.
-This means that you can take your `Vagrantfile` you used to spin up VMs using VirtualBox
-and you can reasonably expect that `Vagrantfile` to behave the same with something like VMware.
-
-By default, we can access Vagrant VMs via SSH using the `vagrant ssh` command.
-When we access a VM via SSH, Vagrant forwards `port 22` from the guest machine to an open port in the host machine.
-Vagrant automatically handles this port forwarding process without any user intervention.
-
-
-* [A Beginner's Guide for Vagrant](https://blog.jeffli.me/blog/2016/12/06/a-beginners-guide-for-vagrant/)
-* [Vagrant Networking Explained](https://blog.jeffli.me/blog/2017/04/22/vagrant-networking-explained/)
-* [Vagrant: Up and Running by Mitchell Hashimoto: Networking in Vagrant](https://www.oreilly.com/library/view/vagrant-up-and/9781449336103/ch04.html)
-* [VirtualBox Network Settings: Complete Guide](https://www.nakivo.com/blog/virtualbox-network-setting-guide/)
-* [How To Configure Networking In Vagrant](https://ostechnix.com/how-to-configure-networking-in-vagrant/)
-* [Vagrant beyond the basics](https://fedoramagazine.org/vagrant-beyond-basics/)
 
 ## Vagrant Terminology
 Give that Vagrant is an abstraction for managing virtual machines for multiple hypervisor technologies,
@@ -448,8 +565,26 @@ config.vm.usable_port_range = (2200..2250)
 ------
 
 
+
 # How to Interpret Commands
 
+## Vagrant Virtual Hardware Provisioning
+During the Vagrant provisioning process,
+you can specify the number of CPU cores, the amount of RAM, etc.
+You can validate the implementation of these provisioning steps with these commands:
+
+```bash
+# what are the number of cpu cores
+grep 'cpu cores' /proc/cpuinfo | uniq
+
+# what is the amount of ram memory
+
+# what is the linux distribution installed
+
+# what is the hostname
+```
+
+## Vagrant Virtual Network Provisioning
 ```bash
 route -n
 ping -4 -c3 -a goolge.com
@@ -513,15 +648,25 @@ boxB.vm.network "private_network", ip: "192.168.50.5", virtualbox__intnet: "myNe
 [08]:https://www.nakivo.com/blog/virtualbox-network-setting-guide/
 [09]:https://en.wikipedia.org/wiki/IP_address#Public_address
 [10]:https://en.wikipedia.org/wiki/Private_network#Private_IPv4_address_spaces
-[11]:
-[12]:
-[13]:
-[14]:
-[15]:
-[16]:
-[17]:
-[18]:
-[19]:
-[20]:
+[11]:https://www.geeksforgeeks.org/basics-computer-networking/
+[12]:https://www.redhat.com/en/topics/virtualization
+[13]:https://www.vagrantup.com/docs/vagrantfile
+[14]:https://www.vagrantup.com/docs/provisioning
+[15]:https://opensource.com/resources/what-ansible
+[16]:https://opensource.com/resources/vagrant
+[17]:https://www.virtualbox.org/
+[18]:https://www.zdnet.com/article/what-is-docker-and-why-is-it-so-darn-popular/
+[19]:https://opensource.com/resources/what-bash
+[20]:https://phoenixnap.com/kb/what-is-hypervisor-type-1-2
+[21]:https://phoenixnap.com/kb/what-is-server-virtualization
+[22]:https://phoenixnap.com/blog/what-is-bare-metal-hypervisor
+[23]:https://www.nakivo.com/blog/use-virtualbox-quick-overview/
+[24]:https://www.geeksforgeeks.org/tcp-ip-in-computer-networking/?ref=rp
+[25]:https://www.geeksforgeeks.org/software-defined-networking/
+[26]:https://www.geeksforgeeks.org/fundamentals-of-virtual-networking/?ref=rp
+[27]:https://www.augmentedmind.de/2020/07/05/complete-introduction-to-vagrant/
+[28]:
+[29]:
+[30]:
 
 

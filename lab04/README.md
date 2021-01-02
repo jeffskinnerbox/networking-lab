@@ -5,6 +5,14 @@ Version:      0.0.1
 -->
 
 
+<div align="center">
+<img src="http://www.foxbyrd.com/wp-content/uploads/2018/02/file-4.jpg" title="These materials require additional work and are not ready for general use." align="center">
+</div>
+
+
+----
+
+
 # LAB04 - Virtual Internal Networking
 The network configuration in lab03 is very useful for many purposes, but sometimes,
 you want a virtual network that is completely separated from the host network.
@@ -15,7 +23,12 @@ There is no additional virtual networking device being created,
 and there is no additional routing table entry on the host (nor any local routing table entry).
 Thus, the new network to which the machines are attached is actually completely isolated from the host network.
 
-Sources:
+## Sources & Additional Background
+For a more complete description of the concepts being used here,
+you should also check out the master `README.md` file in the root directory
+(i.e. `cd ..`) of this repository.
+In addition, check out these sources:
+
 * [Virtual networking labs – VirtualBox internal networks and bridges](https://leftasexercise.com/2019/12/16/virtual-networking-labs-virtualbox-internal-networks-and-bridges/)
 * [Virtual networking labs – networking-samples](https://github.com/christianb93/networking-samples)
 

@@ -5,11 +5,24 @@ Version:      0.0.1
 -->
 
 
+<div align="center">
+<img src="http://www.foxbyrd.com/wp-content/uploads/2018/02/file-4.jpg" title="These materials require additional work and are not ready for general use." align="center">
+</div>
+
+
+----
+
+
 # LAB03 - Virtual Internal Networks and Bridges
 So far, we have been playing with virtual networking for one VM, connected to the host.
 Now let us see how we can establish virtual networks connecting more than one VM.
 
-Sources:
+## Sources & Additional Background
+For a more complete description of the concepts being used here,
+you should also check out the master `README.md` file in the root directory
+(i.e. `cd ..`) of this repository.
+In addition, check out these sources:
+
 * [Virtual networking labs – VirtualBox internal networks and bridges](https://leftasexercise.com/2019/12/16/virtual-networking-labs-virtualbox-internal-networks-and-bridges/)
 * [Virtual networking labs – networking-samples](https://github.com/christianb93/networking-samples)
 

@@ -5,6 +5,13 @@ Version:      0.0.1
 -->
 
 
+<div align="center">
+<img src="http://www.foxbyrd.com/wp-content/uploads/2018/02/file-4.jpg" title="These materials require additional work and are not ready for general use." align="center">
+</div>
+
+
+----
+
 
 # LAB02 - Single Machine Networking With Host-Only Networking
 What is the difference between NAT / Bridged / Host-Only networking?
@@ -22,7 +29,12 @@ if your host IP is `172.16.120.45` then your VM will be like `172.16.120.50`.
 It can be accessed by all computers in your host network.
 *Bridged mode replicates another node on the physical network and your VM will receive it's own IP address if DHCP is enabled in the network.*
 
-Sources:
+## Sources & Additional Background
+For a more complete description of the concepts being used here,
+you should also check out the master `README.md` file in the root directory
+(i.e. `cd ..`) of this repository.
+In addition, check out these sources:
+
 * [Virtualization: Bridged, NAT, Host-only - Virtual machine connection types](https://www.youtube.com/watch?v=XCkKDWMYHME)
 * [Virtual networking labs – NAT and host-only networking with VirtualBox](https://leftasexercise.com/2019/12/13/virtual-networking-labs-nat-and-host-only-networking-with-virtualbox/)
 * [Virtual networking labs – networking-samples](https://github.com/christianb93/networking-samples)
