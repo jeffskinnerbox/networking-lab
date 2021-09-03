@@ -1,0 +1,71 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+# Maintainer:   jeffskinnerbox@yahoo.com / www.jeffskinnerbox.me
+# Version:      0.0.1
+
+
+servers=[
+  {
+    :define => "Lab01A-box1",
+    :hostname => "box1",
+    :box => "ubuntu-headless",
+    :ram => 2048,
+    :cpu => 1
+  },
+  {
+    :define => "Lab01A-box2",
+    :hostname => "box2",
+    :box => "ubuntu-headless",
+    :ram => 2048,
+    :cpu => 1
+  },
+  {
+    :define => "Lab01A-box3",
+    :hostname => "box3",
+    :box => "ubuntu-headless",
+    :ram => 2048,
+    :cpu => 1
+  }
+]
+
+Vagrant.require_version ">= 2.2.6"
+
+Vagrant.configure(2) do |config|
+    servers.each do |machine|
+        config.vm.define machine[:define] do |node|
+            # define the virtual machine
+            node.vm.box = machine[:box]
+            node.vm.hostname = machine[:hostname]
+
+            # configure virtual machine
+            node.vm.provider "virtualbox" do |vb|
+                vb.gui = false                                             # true = GUI, false = headless
+                vb.customize ["modifyvm", :id, "--cpus", machine[:cpu]]    # number of cpu allocated
+                vb.customize ["modifyvm", :id, "--memory", machine[:ram]]  # ram memory allocated
+            end
+
+            # avoid the updating of guest additions if the user has the plugin installed (any version)
+            # update the plugin with 'vagrant plugin update vagrant-vbguest'
+            if Vagrant.has_plugin?("vagrant-vbguest")
+                config.vbguest.auto_update = false
+            end
+
+            # configure virtual network (public network)
+            $def_net = `ip route | grep -E "^default via 192" | awk '{printf "%s", $5; exit 0}'`   # default network interface
+            config.vm.network "public_network", bridge: "#$def_net"                                # DHCP assigned ip address
+
+            ## update linux packages currently within virtual machine
+            #node.vm.provision "shell", name: "update linux packages (as root)",
+                #run: "always", inline: "apt-get -y update && apt-get -y dist-upgrade"
+
+            ## install networking tools used within virtual machine
+            #node.vm.provision "shell", name: "install networking tools used in labs (as root)",
+                #run: "once", path: "../scripts/net-tools.sh"
+        end
+    end
+end
+
+
+
+

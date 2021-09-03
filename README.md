@@ -13,6 +13,22 @@ Version:      0.0.1
 ----
 
 
+READ THIS
+* [TCP/IP networking basics: hubs, switches, gateways and routing](https://www.iusmentis.com/technology/tcpip/networks/)
+* [An Introduction to Networking Terminology, Interfaces, and Protocols](https://www.digitalocean.com/community/tutorials/an-introduction-to-networking-terminology-interfaces-and-protocols)
+* [Introduction to Linux interfaces for virtual networking](https://developers.redhat.com/blog/2018/10/22/introduction-to-linux-interfaces-for-virtual-networking/)
+* [Understanding Sockets](https://www.digitalocean.com/community/tutorials/understanding-sockets)
+
+* [VirtualNetworking](https://wiki.libvirt.org/page/VirtualNetworking)
+* [libvirt Networking Handbook](https://jamielinux.com/docs/libvirt-networking-handbook/)
+* [Introduction to networking](https://docs.openstack.org/liberty/networking-guide/intro-networking.html)
+* [How Networks Work](https://dzone.com/articles/how-networks-work-what-is-a-switch-router-dns-dhcp#)
+* [How Networks Work: Part II](https://dzone.com/articles/how-networks-work-part-ii)
+
+
+----
+
+
 # Virtual Networking Lab
 When you work with [virtualization][12] environments like [VirtualBox][17] and [Vagrant][16],
 you will sooner or later realize that a large part of the complexity of such environments
@@ -20,7 +36,7 @@ originates in the non-trivial endeavor of [TCP/IP computer networking][11].
 The virtualization process/technology requires you to stack different virtualization layers on top of each other.
 One of those layers is networking, which also has to be virtualized,
 and seems to get hidden and overlooked in the larger issues of virtualization.
-To provide the basics to understand of virtaul networing,
+To provide the basics to understand of virtual networking,
 this series aims at introducing some of the more common virtual networking techniques via hands-on exercises.
 
 Within this series of Labs I provide a validated [Vagrant Vagrantfile][13]
@@ -53,11 +69,11 @@ Each Lab has its own directory with a `Vagrantfile` and a `README.md` file.
 All the Labs use VirtualBox for server virtualization and some use Docker for containers.
 [Vagrant provisioning][14] is typical done via Shell, but [Ansible][15] is also used in some Labs.
 Assuming you have installed all these utilities,
-the Vagrantfiles should be ready to go, just use `vagrent up` to get started.
+the Vagrantfiles should be ready to go, just use `vagrant up` to get started.
 
 To support the activities performed within the Labs,
 some utilities need to be installed within the server environments.
-This is done by a few [Bash shell][19] scripts that you will find in the repositories directory `scripts`.
+This is done by a few [Bash shell][19] scripts that you will find in the Lab repositories directory `scripts`.
 
 ## Prerequisites
 There is no way around it,
@@ -71,6 +87,19 @@ If you need a refresher on computer networking, here are some good tutorials:
 * [Computer Networking Tutorial: The Ultimate Guide](https://www.softwaretestinghelp.com/computer-networking-basics/)
 * [Computer Networking Complete Course - Beginner to Advanced](https://www.youtube.com/watch?v=QKfk7YFILws)
 * [Sunny Classroom](https://www.youtube.com/user/sunnylearning/featured)
+
+### Pre-Built Box
+I'm using the `ubuntu-headless` box for my labs.
+
+```bash
+# list of boxes you have on your host
+$ vagrant box list
+lamp-stack      (virtualbox, 0)
+ubuntu-headless (virtualbox, 0)
+ubuntu/bionic64 (virtualbox, 20201211.1.0)
+ubuntu/focal64  (virtualbox, 20201210.0.0)
+windows10base   (virtualbox, 0)
+```
 
 ## Sources
 Nearly all the Labs are a refinement of other peoples work, and so many thanks must go to all of them.
@@ -229,7 +258,7 @@ These are known as Network devices and include things such as routers, switches,
     * **NIC -** Network Interface Controller (NIC) (aka Network Adapters)
 * Network Unique Identifiers
     * **Hostname -** Each device in the network is associated with a unique device name,
-    established by a human administtor of the device, known as Hostname.
+    established by a human administrator of the device, known as Hostname.
     * **IP Address -** Also known as the Logical Address,
     the IP Address is the network address of the system across the network.
     To identify each device in the world-wide-web,
@@ -252,12 +281,12 @@ These are known as Network devices and include things such as routers, switches,
     web addresses or URLs (ex: `www.google.com`) into their corresponding IP addresses.
     Therefore, people don’t have to remember all the IP addresses of each and every website.
 * Network Types
-    * **VPN -** AVirtual Private Network (VPN) allows for information to be securely
+    * **VPN -** A Virtual Private Network (VPN) allows for information to be securely
     sent across a public or unsecure network, such as the Internet.
     Common uses of a VPN are to connect branch offices or remote users to a main office.
     * **SDN -** A [Software Defined Network (SDN)][25] takes the control plane away from the switch
-    and assign it to a centralised unit called the SDN controller.
-    Hence, a network administrator can shape traffic via a centralised console without
+    and assign it to a centralized unit called the SDN controller.
+    Hence, a network administrator can shape traffic via a centralized console without
     having to touch the individual switches.
 
 ## Virtual Networking
@@ -277,7 +306,7 @@ which creates a secure connection between one network and another over the Inter
 is an example of virtual networking is a virtual local area network (VLAN). A VLAN is a subgroup of a network, which combines multiple network devices into one grouping, or domain, and partitions it off from the rest.
 A virtual extensible LAN (VXLAN) is another example of virtual networking. Beyond simply dividing a network into subgroups, VXLANs can virtualize an entire network, providing large-scale overly network and segmentation capabilities.
 
-Virtual networking can inclue the following:
+Virtual networking can include the following:
 
 * **vSwitch -** A software application called Virtual Switch (vSwitch) on the host server
 allows us to set up and configure a virtual network means it controls and directs communication
@@ -318,7 +347,7 @@ There are three options of using the promiscuous mode:
 * **Allow All:** There are no restrictions in this mode. A VM network adapter can see all incoming and outgoing traffic.
 The Promiscuous mode can be used not only for the Bridged Networking mode, but also for NAT Network, Internal Network and Host-Only Adapter modes.
 
-### PortForwarding
+### Port Forwarding
 While not strictly a networking mode or capability,
 port forwarding is a process of intercepting traffic addressed to the appropriate IP address and port in addition to redirecting that traffic to a different IP address and/or port. Special applications can be used on computers and other router devices to configure port forwarding. One of the most popular use cases for port forwarding is by providing access to particular network services that are hidden behind the NAT from external networks. After configuring port forwarding rules, clients can access the appropriate services from outside by connecting to the router’s (host’s) external IP address and specified port.
 
@@ -440,7 +469,7 @@ In general, this means your machine gets an address in the [private address spac
 (e.g. Private IPv4 addresses =
 `10.0.0.0 – 10.255.255.255`, `172.16.0.0 – 172.31.255.255`, and `192.168.0.0 – 192.168.255.255`).
 
-In private networking, a virtualized subnet that is invisible from outside of Vagrant host will be created by the underling provider. Virtual machines attached to the same virtualized subnet are ables to communicate with each other. Unlike public networking, there is no way for IPs on the host's networkto connect to the virtual machines directly.
+In private networking, a virtualized subnet that is invisible from outside of Vagrant host will be created by the underling provider. Virtual machines attached to the same virtualized subnet are ables to communicate with each other. Unlike public networking, there is no way for IPs on the host's network to connect to the virtual machines directly.
 
 Since the addresses assigned to the virtual machines are private IPv4 ones, the IP address range chosen by Vagrant for the virtualized subnet must not be conflict with any existing network. (Note: The IP range `172.16.0.0 – 172.31.255.255` is rarely used in organizations, which is why it is often used in Vagrant private networking).
 
@@ -668,5 +697,13 @@ boxB.vm.network "private_network", ip: "192.168.50.5", virtualbox__intnet: "myNe
 [28]:
 [29]:
 [30]:
-
-
+[31]:
+[32]:
+[33]:
+[34]:
+[35]:
+[36]:
+[37]:
+[38]:
+[39]:
+[40]:

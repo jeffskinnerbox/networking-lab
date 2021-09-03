@@ -22,12 +22,13 @@ What is the difference between NAT / Bridged / Host-Only networking?
 
 * **Host-Only:** The VM will be assigned one IP, but it's only accessible by the box VM is running on.
 No other computers can access it.
-*Host-only only permits VM network operations with the Host OS.*
+_Host-only only permits VM network operations with the Host OS._
 * **NAT:** Just like your home network with a wireless router,
-the VM will be assigned in a separate subnet, like `192.168.1.1`is your host computer,
-and VM is `192.168.2.1`, then your VM can access outside network like your host,
+the VM will be assigned in a separate subnet, like `192.168.1.200`is your host computer,
+and VM is `10.0.2.15`, then your VM can access outside network like your host,
 but no outside access to your VM directly, it's protected.
-*NAT mode will mask all VM network activity as if it came from your Host OS, although the VM can access external resources.*
+_NAT mode will mask all VM network activity as if it came from your Host OS,
+although the VM can access external resources._
 * **Bridged:** Your VM will be in the same network as your host,
 if your host IP is `172.16.120.45` then your VM will be like `172.16.120.50`.
 It can be accessed by all computers in your host network.
