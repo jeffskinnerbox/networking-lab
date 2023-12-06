@@ -14,16 +14,51 @@ Version:      0.0.1
 
 
 READ THIS
+* [Networking Fundamentals](https://www.youtube.com/watch?v=bj-Yfakjllc&list=PLIFyRwBY_4bRLmKfP1KnZA6rZbRHtxmXi)
+* [Subnetting Mastery](https://www.youtube.com/watch?v=BWZ-MHIhqjM&list=PLIFyRwBY_4bQUE4IB5c4VPRyDoLgOdExE)
+    * [Practice Subnetting IPv4](https://subnetipv4.com/)
+* [Address Resolution Protocol (ARP)](https://www.practicalnetworking.net/series/arp/address-resolution-protocol/)
+* [Practical TLS](https://www.youtube.com/watch?v=HMoFvRK4HUo&list=PLIFyRwBY_4bTwRX__Zn4-letrtpSj1mzY)
+* [Local Broadcast and Directed Broadcasts - Description and Demonstration](https://www.youtube.com/c/PracticalNetworking/search?query=broadcast)
+* [Packet Tracer labs](https://www.youtube.com/watch?v=iHioYYvQIMU&list=PLIFyRwBY_4bRmOsO1EIPOIC3T5HLvz2_6)
+* [Introduction to Linux interfaces for virtual networking](https://developers.redhat.com/blog/2018/10/22/introduction-to-linux-interfaces-for-virtual-networking#)
+* [A sysadmin's guide to network interface configuration files](https://opensource.com/article/22/8/network-configuration-files)
+
 * [TCP/IP networking basics: hubs, switches, gateways and routing](https://www.iusmentis.com/technology/tcpip/networks/)
 * [An Introduction to Networking Terminology, Interfaces, and Protocols](https://www.digitalocean.com/community/tutorials/an-introduction-to-networking-terminology-interfaces-and-protocols)
 * [Introduction to Linux interfaces for virtual networking](https://developers.redhat.com/blog/2018/10/22/introduction-to-linux-interfaces-for-virtual-networking/)
 * [Understanding Sockets](https://www.digitalocean.com/community/tutorials/understanding-sockets)
 
+* [What are VLANs? -- the simplest explanation](https://www.youtube.com/watch?v=MmwF1oHOvmg)
+* [VLAN vs Subnet: What Are Their Differences?](https://www.fiber-optic-transceiver-module.com/vlan-vs-subnet.html)
+
+* [What is Virtualization?](https://www.sunnyvalley.io/docs/network-basics/what-is-virtualization)
 * [VirtualNetworking](https://wiki.libvirt.org/page/VirtualNetworking)
 * [libvirt Networking Handbook](https://jamielinux.com/docs/libvirt-networking-handbook/)
 * [Introduction to networking](https://docs.openstack.org/liberty/networking-guide/intro-networking.html)
 * [How Networks Work](https://dzone.com/articles/how-networks-work-what-is-a-switch-router-dns-dhcp#)
 * [How Networks Work: Part II](https://dzone.com/articles/how-networks-work-part-ii)
+
+* [Docker networking is CRAZY!! (you NEED to learn it)](https://www.youtube.com/watch?v=bKFMS5C4CG0)
+* [Understanding Docker Networking](https://earthly.dev/blog/docker-networking/)
+* [Docker Networking Tutorial // ALL Network Types explained!](https://www.youtube.com/watch?v=5grbXvV_DSk&t=210s)
+* [Docker Networking Overview](https://docs.docker.com/network/)
+* [Docker Networking Options](https://www.youtube.com/watch?v=Yr6-2ddhLVo)
+
+# The 7 Types of Docker Networks
+* [Docker networking is CRAZY!! (you NEED to learn it)](https://www.youtube.com/watch?v=bKFMS5C4CG0)
+* [Docker Networking Tutorial // ALL Network Types explained!](https://www.youtube.com/watch?v=5grbXvV_DSk)
+
+# EVE-NG
+EVE-NG Is a network emulation tool that you can use to learn networking concepts
+of various vendors by connecting virtual equipment and working on the equipment
+as if it was real equipment.
+
+* [EVE-NG - First Time Configuration](https://www.youtube.com/watch?v=uEH3IN1295k&t=294s)
+
+# ZeroTier
+ZeroTier combines the capabilities of VPN and SD-WAN, simplifying network management.
+* [ZeroTier](https://www.zerotier.com/)
 
 
 ----
@@ -664,6 +699,14 @@ One interesting topic that requires mentioning is the state of the neighbor in t
 boxB.vm.network "private_network", ip: "192.168.50.5", :name => 'vboxnet0'
 boxB.vm.network "private_network", ip: "192.168.50.5", virtualbox__intnet: "myNetwork"
 ```
+
+
+-----
+
+
+
+# Docker Networking
+* [Docker Networking Overview](https://docs.docker.com/network/)
 
 
 
